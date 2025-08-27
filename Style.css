@@ -1,0 +1,76 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+    body{
+      display:flex;justify-content:center;align-items:center;
+      height:100vh;background:#0f172a;
+    }
+
+    nav{
+      position:relative;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      width:420px;
+      height:80px;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:0 4px 20px rgba(0,0,0,.25);
+      z-index:0;
+    }
+
+    nav a{
+      position:relative;
+      width:70px;height:80px;
+      display:flex;flex-direction:column;
+      justify-content:center;align-items:center;
+      color:#333;text-decoration:none;
+      z-index:2;
+    }
+    nav a .icon{font-size:26px;transition:.3s;}
+    nav a .text{
+      font-size:12px;position:absolute;bottom:8px;
+      opacity:0;transition:.3s;
+    }
+
+    /* ==== Green Circle Indicator ==== */
+    .indicator {
+      position: absolute;
+      top:-20px;
+      width:70px; height:70px;
+      background:#10b981;
+      border-radius:50%;
+      z-index:2;
+      transition:.5s;
+      box-shadow:0 0 0 1px #0f172a; /* 1px gap */
+    }
+
+    /* ==== White Background Mask with FULL ROUND Cut ==== */
+    .mask {
+      position:absolute;
+      inset:0;
+      background:#fff;
+      border-radius:20px;
+      z-index:1;
+      /* कटिंग के लिए circle mask */
+      -webkit-mask:
+        radial-gradient(circle 36px at var(--x,50%) -10px, transparent 98%, black 100%);
+      -webkit-mask-repeat:no-repeat;
+      -webkit-mask-composite:destination-out;
+      mask-composite:exclude;
+    }
+
+    /* Active Effect */
+    nav a.active .icon{
+      transform:translateY(-20px);
+      color:#fff;
+    }
+    nav a.active .text{
+      opacity:1;
+      transform:translateY(-5px);
+      color:#fff;
+    }
+
+    /* Hover -> Text shown in Red */
+    nav a:hover .text{
+      opacity:1;
+      color:red;
+    }
